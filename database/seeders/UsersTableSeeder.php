@@ -18,7 +18,6 @@ class UsersTableSeeder extends Seeder
             'name' => 'Bas',
             'email' => 's1118301@student.hsleiden.nl',
             'password' => bcrypt('laravel'),
-            'role' => 'Admin'
         ]);
 
         DB::table('users')->insert([
@@ -43,6 +42,13 @@ class UsersTableSeeder extends Seeder
             'name' => 'Rogar',
             'email' => 'rogar@gmail.com',
             'password' => bcrypt('laravel'),
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
+            'role' => 'Admin',
         ]);
     }
 }

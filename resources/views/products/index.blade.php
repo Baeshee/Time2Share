@@ -14,6 +14,11 @@
             <label class="filter-section__label" for="unavailable">Unavailable</label>
             <input class="filter-section__input" id="unavailable" name="unavailable" type="checkbox">
         </div>
+
+        <div class="filter-section__wrapper">
+            <label class="filter-section__label" for="returning">Returning</label>
+            <input class="filter-section__input" id="returning" name="returning" type="checkbox">
+        </div>
     </section> 
 
     <ul class="card-wrapper">

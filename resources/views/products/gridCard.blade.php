@@ -8,10 +8,12 @@
                 <section class="gridCard__body__text">
                     <h2 class="js--gridCard__body__title">{{$product->name}}</h2>
                     <p>{{$product->description}}</p>
-                    @if($product->status == 'Unavailable')
-                    <p class="red">{{$product->status}}</p>
+                    @if($product->status == 'Lend Out')
+                        <p class="red">{{$product->status}}</p>
+                    @elseif($product->status == 'Returning')
+                        <p class="orange">Soon Available</p>
                     @else
-                    <p class="green">{{$product->status}}</p>
+                        <p class="green">{{$product->status}}</p>
                     @endif
                 </section>   
             </section>

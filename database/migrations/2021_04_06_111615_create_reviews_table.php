@@ -20,6 +20,7 @@ class CreateReviewsTable extends Migration
             $table->string('lender_email')->nullable();
             $table->foreign('lender_email')->references('email')->on('users');
             $table->text('review_content');
+            $table->timestamps();
         });
     }
 

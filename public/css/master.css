@@ -102,15 +102,8 @@ li{
     color: black;
 }
 
-.gridCard{
-    width: 100%;
-    height: 40rem;
-    box-shadow: 0 0.5rem 1.5rem black;
-    border-radius: 2rem;
-}
-
-.gridCard:hover{
-    transform: scale(1.05);
+.gridCard:hover, .ownedCard:hover, .lendCard:hover{
+    transform: scale(1.02);
 }
 
 .gridCard__image{
@@ -118,7 +111,19 @@ li{
     height: 70%;
 }
 
-.gridCard__image img{
+.lendCard, .ownedCard, .gridCard{
+    width: 100%;
+    height: 50rem;
+    box-shadow: 0 0.5rem 1.5rem black;
+    border-radius: 2rem;
+}
+
+.lendCard__image, .ownedCard__image{
+    width: 100%;
+    height: 60%;
+}
+
+.lendCard__image img, .ownedCard__image img, .gridCard__image img{
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     width: 100%;
@@ -126,23 +131,32 @@ li{
     object-fit: cover;
 }
 
-.gridCard__body{
+.lendCard__body, .ownedCard__body, .gridCard__body{
     margin-top: -0.3rem;
     height: 30%;
     width: 100%;
 }
 
-.gridCard__body__text{
+.lendCard__body__text, .ownedCard__body__text, .gridCard__body__text{
     margin: 2rem 2rem 0 2rem
 }
 
-.gridCard__body__text h2{
+.lendCard__body__text h2, .ownedCard__body__text h2, .gridCard__body__text h2{
     font-size: 1.6rem;
 }
 
-.gridCard__body__text p{
+.lendCard__body__text p, .ownedCard__body__text p, .gridCard__body__text p{
     padding-top: 0.5rem;
     font-size: 1.4rem;
+}
+
+.lendCard__body__buttons, .ownedCard__body__buttons{
+    margin-top: 5rem;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -152,10 +166,6 @@ li{
     box-shadow: 0 0.5rem 1.5rem black;
     border-radius: 2rem;
     margin: 5rem 0;
-}
-
-.card:hover{
-    transform: scale(1.05);
 }
 
 .card__image{
@@ -190,7 +200,7 @@ li{
     font-size: 1.4rem;
 }
 
-.card__body__buttons{
+.card__body__buttons, .redirect-page__review-form-buttons{
     margin-top: 5rem;
     height: 10%;
     width: 100%;
@@ -200,16 +210,194 @@ li{
 }
 
 .button{
+    font-size: 1.5rem;
     height: 5rem;
     width: 10rem;
-    border: 1px solid rgb(36, 36, 36);
+    border: 0.2rem solid rgb(36, 36, 36);
     background-color: rgb(36, 36, 36);
     color: white;
+}
+
+.active:hover{
+    cursor: pointer;
+    transform: scale(0.95);
 }
 
 .disabled{
     background-color: rgba(133, 133, 133, 0.39);
     color: rgba(0, 0, 0, 0.26);
+}
+
+.cancel{
+    background-color: white;
+    color: black;
+    border: 0.2rem solid black;
+}
+
+.redirect-page__review-form{
+    width: 30rem;
+    margin: 5rem auto;
+    box-shadow: 0 0.5rem 2rem black;
+    height: 40rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 2rem;
+    background-color: #eee;
+}
+
+.redirect-page__review-form-section{
+    margin-top: 2rem;
+    font-size: 2rem;
+    width: 100%;
+}
+
+.redirect-page__review-form__input{
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 100%;
+    font-weight: 400;
+    font-family: sans-serif;
+}
+
+.redirect-page__review-form__option{
+    background-color: white;
+    color: black;
+}
+
+.redirect-page__review-form__big{
+    height: 20rem;
+    padding: 0.5rem;
+}
+
+.redirect-page__review-form-buttons{
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.hidden{
+    display: none;
+}
+
+.dashboard-headers{
+    margin-top: 3rem;
+    font-size: 3rem;
+}
+
+.dashboard-placeholder{
+    font-size: 2.5rem;
+}
+
+.redirect-page{
+    margin: 5rem 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.redirect-page__body{
+    width: 30rem;
+}
+
+.redirect-page__body h2{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.redirect-page__body p{
+    margin-top: 2rem;
+    font-size: 2rem;
+}
+
+.redirect-page__buttons{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+}
+
+.redirect{
+    font-size: 2rem;
+    width: 15rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.redirect-small{
+    font-size: 1.5rem;
+    height: 5rem;
+    width: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-wrapper{
+    margin: 4rem 4rem 0 4rem;
+    display: grid;
+    grid-template-columns: repeat(1,minmax(0,1fr));
+    grid-gap: 4rem;
+    width: 30rem;
+}
+
+.review-card{
+    width: 100%;
+    height: 20rem;
+    box-shadow: 0 0.5rem 1.5rem black;
+    border-radius: 2rem;
+}
+
+.review-card__heading{
+    height: 45%;
+    width: 100%;
+    background-color: #eee;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    border-bottom: 0.1rem solid black;
+}
+
+.review-card__heading h2{
+    padding-top:2rem;
+    font-size: 2.5rem;
+}
+
+.review-card__heading p{
+    font-size: 2rem;
+}
+
+.review-card__heading h2, .review-card__heading p, .review-card__body p{
+    padding-left: 2rem;
+}
+
+.review-card__body{
+    height: 55%;
+    width: 100%;
+}
+
+.review-card__body p{
+    padding-top: 2rem;
+    font-size: 2rem;
+}
+
+.review-section-header{
+    margin-top: 4em;
+    font-size: 3rem;
+}
+
+.logout-link{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+    font-size: 2rem;
+    color: white;
 }
 
 
@@ -253,6 +441,10 @@ li{
         margin: 5vh 20vh 1vh 20vh;
     }
 
+    .dashboard-placeholder{
+        grid-column: 2 / span 1;
+    }
+
     .js--search-box{
         width: 40vw;
     }
@@ -263,6 +455,10 @@ li{
 
     .menu-icon{
         display: none;
+    }
+
+    .card{
+        width: 60vw;
     }
 
     .navigation-menu{
@@ -286,12 +482,47 @@ li{
         display: block;
         height: 6rem;
     }
+
+    .redirect-page__body{
+        width: 50rem;
+    }
+
+    .review-wrapper{
+        width: 60rem;
+    }
+
+    .review-card{
+        height: 40rem;
+    }
+
+    .review-card__heading{
+        height: 25%;
+    }
+
+    .review-card__body{
+        height: 75%;
+    }
+
+    .logout-link{
+        position: absolute;
+        left: initial;
+        right: 0;
+        top: 0;
+        margin-top: 9rem;
+        margin-right: 5%;
+        font-size: 2.5rem;
+        color: black;
+    }
 }
 
 @media (min-width: 780px) and (max-width: 1140px){
     .card-wrapper{
         grid-template-columns: repeat(2,minmax(0,1fr));
         margin: 5vh 10vh 1vh 10vh;
+    }
+
+    .dashboard-placeholder{
+        grid-column: span 2;
     }
 
     .js--search-box{
@@ -304,11 +535,7 @@ li{
         font-size: 3rem;
     }
 
-    .gridCard{
-        height: 55rem;
-    }
-
-    .card{
+    .gridCard, .card, .lendCard{
         height: 55rem;
     }
 
@@ -316,20 +543,41 @@ li{
         font-size: 6rem;
     }
 
-    .gridCard__body__text h2{
+    .gridCard__body__text h2, .card__body__text h2, .lendCard__body__text h2{
         font-size: 2.4rem;
     }
     
-    .gridCard__body__text p{
+    .gridCard__body__text p, .card__body__text p, .lendCard__body__text p{
         font-size: 1.8rem;
     }
 
-    .card__body__text h2{
-        font-size: 2.4rem;
+    .redirect-page__body{
+        width: 50rem;
     }
-    
-    .card__body__text p{
-        font-size: 1.8rem;
+
+    .card{
+        width: 60vw;
+        height: 80rem;
+    }
+
+    .review-wrapper{
+        width: 60rem;
+    }
+
+    .review-card{
+        height: 40rem;
+    }
+
+    .review-card__heading{
+        height: 25%;
+    }
+    .review-card__body{
+        height: 75%;
+    }
+
+    .logout-link{
+        margin-top: 1rem;
+        font-size: 3rem;
     }
 }
 
@@ -346,6 +594,10 @@ li{
 
 .red{
     color: red;
+}
+
+.orange{
+    color: orange;
 }
 
 .green{

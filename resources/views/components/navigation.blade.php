@@ -5,10 +5,8 @@
         <div class="bottom"></div>
     </div>
     <ul class="navigation-menu">
-        <li class="navigation-menu__item"><a href="/">Home</a></li>
+        <li class="navigation-menu__item"><a href="/">Time2Share <i class="fas fa-history"></i></a></li>
         <li class="navigation-menu__item"><a href="/dashboard">Account</a></li>
-        <li class="navigation-menu__item"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">Logout</a>
-        </li>
     </ul>
 </nav>
 

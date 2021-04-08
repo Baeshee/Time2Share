@@ -17,6 +17,10 @@ class User extends Authenticatable
         return $this->hasMany('\App\Models\Product', 'owner_email', 'email');
     }
 
+    public function allLendProducts(){
+        return $this->hasMany('\App\Models\Product', 'lender_email', 'email');
+    }
+
     public function allReviews(){
         return $this->hasMany('\App\Models\Review', 'lender_email', 'email');
     }

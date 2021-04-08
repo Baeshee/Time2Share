@@ -19,6 +19,7 @@ class UsersController extends Controller
                 $id = auth()->user()->id,
                 'user' => \App\Models\User::find($id),
                 'products' => \App\Models\User::find($id)->allOwnedProducts,
+                'lend_products' => \App\Models\User::find($id)->allLendProducts,
             ]);
         }
         return redirect('/');

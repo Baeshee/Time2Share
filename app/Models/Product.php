@@ -13,6 +13,10 @@ class Product extends Model
         return $this->belongsTo('\App\Models\Product', 'owner_email', 'email');
     }
 
+    public function getLender(){
+        return $this->belongsTo('\App\Models\Product', 'lender_email', 'email');
+    }
+
     public function allReviews(){
         return $this->hasMany('\App\Models\Review', 'product_name', 'name');
     }

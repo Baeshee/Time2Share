@@ -22,7 +22,8 @@ class CreateProductsTable extends Migration
             $table->foreign('lender_email')->references('email')->on('users');
             $table->string('description');
             $table->string('image')->default('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa6kzyaY9pOL1-slMuw-gTS2ZPZjxqw9Xe167zwE_pv8g5B99M3zk-nI-G-z777G0aT5A&usqp=CAU');
-            $table->string('status');
+            $table->string('status')->default('Available');
+            $table->string('return_date')->nullable();
             $table->timestamps();
         });
     }

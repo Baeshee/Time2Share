@@ -17,26 +17,33 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [\App\Http\Controllers\ProductsController::class, 'index']);
-Route::get('/products', [\App\Http\Controllers\ProductsController::class, 'index']);
-Route::get('/products/{id}', [\App\Http\Controllers\ProductsController::class, 'show']);
+Route::get('/redirect-blocked', function(){
+    return view('redirections.redirect--blocked');
+});
 
 Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('/users/{id}/products', [\App\Http\Controllers\UsersController::class, 'allOwnedProducts']);
     Route::get('/users', [\App\Http\Controllers\UsersController::class, 'index']);
-    Route::get('/users/{id}', [\App\Http\Controllers\UsersController::class, 'show']);
 });
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'blocked'])->group(function(){
+    Route::get('/products', [\App\Http\Controllers\ProductsController::class, 'index']);
+    Route::get('/products/{id}', [\App\Http\Controllers\ProductsController::class, 'show']);
     Route::get('/dashboard', [\App\Http\Controllers\UsersController::class, 'show'])->name('dashboard');
+    Route::get('/review/create', [\App\Http\Controllers\ReviewsController::class, 'create']);
+    Route::post('/review', [\App\Http\Controllers\ReviewsController::class, 'store']);
+    Route::post('/lend', [\App\Http\Controllers\ProductsController::class, 'updateLend']);
+    Route::post('/return', [\App\Http\Controllers\ProductsController::class, 'updateReturn']);
+    Route::post('/return/accept', [\App\Http\Controllers\ProductsController::class, 'updateReturnAccept']);
+    Route::get('/redirect-lend', function(){
+        return view('redirections.redirect--lend');
+    });
+    Route::get('/redirect-return', function(){
+        return view('redirections.redirect--return');
+    });
+    Route::get('/redirect-accept', function(){
+        return view('redirections.redirect--accept');
+    });
 });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
-
-// Testing routes for getting users
-
-// Route::get('/users/{id}/products', [\App\Http\Controllers\UsersController::class, 'allOwnedProducts']);
 
 require __DIR__.'/auth.php';
