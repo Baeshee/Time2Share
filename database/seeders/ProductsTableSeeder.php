@@ -15,10 +15,10 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         DB::table('products')->insert([
-            'name' => 'Orange calculator',
+            'name' => 'Calculator',
             'owner_email' => "s1118301@student.hsleiden.nl",
-            'description' => 'Orange calculator, works like a charm.',
-            'image' => '/img/orange_calculator.jpg',
+            'description' => 'Calculator, works like a charm.',
+            'image' => '/img/calculator.jpg',
         ]);
 
         DB::table('products')->insert([

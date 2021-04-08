@@ -8,7 +8,7 @@
                 <h2 class="js--card__body__title">{{$product->name}}</h2>
                 <p>{{$product->description}}</p>
                 <p>{{$product->owner_email}}</p>
-                @if($product->status == 'Unavailable')
+                @if($product->status == 'Lend Out')
                 <p class="red">{{$product->status}}</p>
                 @else
                 <p class="green">{{$product->status}}</p>

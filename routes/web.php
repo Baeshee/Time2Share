@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\ProductsController;
+use \App\Http\Controllers\AdminController;
+use \App\Http\Controllers\UsersController;
+use \App\Http\Controllers\ReviewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,28 +17,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Route::middleware(['auth'])->group(function(){
-//     Route::get('/', [\App\Http\Controllers\ProductsController::class, 'index']);
+//     Route::get('/', [ProductsController::class, 'index']);
 // });
 
-Route::get('/', [\App\Http\Controllers\ProductsController::class, 'index']);
+Route::get('/', [ProductsController::class, 'index']);
 Route::get('/redirect-blocked', function(){
     return view('redirections.redirect--blocked');
 });
 
 Route::middleware(['auth', 'admin'])->group(function(){
-    Route::get('/users/{id}/products', [\App\Http\Controllers\UsersController::class, 'allOwnedProducts']);
-    Route::get('/users', [\App\Http\Controllers\UsersController::class, 'index']);
+    Route::get('/manage', function(){
+        return view('admin.manage');
+    });
+    Route::get('/manage/users', [AdminController::class, 'indexUsers']);
+    Route::get('/manage/products', [AdminController::class, 'indexProducts']);
+    Route::get('/manage/reviews', [AdminController::class, 'indexReviews']);
+    Route::put('/manage/user/update', [AdminController::class, 'putUser']);
+    Route::delete('/manage/product/delete', [AdminController::class, 'destroyProduct']);
+    Route::delete('/manage/review/delete', [AdminController::class, 'destroyReview']);
 });
 
 Route::middleware(['auth', 'blocked'])->group(function(){
-    Route::get('/products', [\App\Http\Controllers\ProductsController::class, 'index']);
-    Route::get('/products/{id}', [\App\Http\Controllers\ProductsController::class, 'show']);
-    Route::get('/dashboard', [\App\Http\Controllers\UsersController::class, 'show'])->name('dashboard');
-    Route::get('/review/create', [\App\Http\Controllers\ReviewsController::class, 'create']);
-    Route::post('/review', [\App\Http\Controllers\ReviewsController::class, 'store']);
-    Route::post('/lend', [\App\Http\Controllers\ProductsController::class, 'updateLend']);
-    Route::post('/return', [\App\Http\Controllers\ProductsController::class, 'updateReturn']);
-    Route::post('/return/accept', [\App\Http\Controllers\ProductsController::class, 'updateReturnAccept']);
+    Route::get('/dashboard', [UsersController::class, 'show'])->name('dashboard');
+    Route::get('/user/create', [UsersController::class, 'create']);
+    Route::post('/user', [UsersController::class, 'store']);
+    Route::get('/products', [ProductsController::class, 'index']);
+    Route::get('/products/{id}', [ProductsController::class, 'show']);
+    Route::get('/review/create', [ReviewsController::class, 'create']);
+    Route::post('/review', [ReviewsController::class, 'store']);
+    Route::post('/lend', [ProductsController::class, 'updateLend']);
+    Route::post('/return', [ProductsController::class, 'updateReturn']);
+    Route::post('/return/accept', [ProductsController::class, 'updateReturnAccept']);
     Route::get('/redirect-lend', function(){
         return view('redirections.redirect--lend');
     });
@@ -43,6 +56,9 @@ Route::middleware(['auth', 'blocked'])->group(function(){
     });
     Route::get('/redirect-accept', function(){
         return view('redirections.redirect--accept');
+    });
+    Route::get('/redirect-create', function(){
+        return view('redirections.redirect--create');
     });
 });
 

@@ -9,7 +9,7 @@
             <p>service@t2s.com</p>
         </section>
         <section class="redirect-page__buttons">
-            <a class="button active redirect" href="/">Go to Home</a>
+        <a class="button active redirect" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">Go to Home</a>
         </section> 
     </section>
 @endsection

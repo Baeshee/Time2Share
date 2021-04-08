@@ -23,8 +23,8 @@
                     <textarea class="redirect-page__review-form__input redirect-page__review-form__big" name="review_content" id="review_content" type="text-area"></textarea>
                 </section>
 
-                <section class="redirect-page__review-form-buttons">
-                <a class="button active redirect-small" href="/">Go to Home</a>
+                <section class="redirect-page__review-form-buttons redirect-page__buttons">
+                    <a class="button active redirect-small" href="/">Go to Home</a>
                     <input class="button active" type="submit" value="Send">
                 </section>
             </form>
