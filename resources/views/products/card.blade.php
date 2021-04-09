@@ -1,7 +1,7 @@
 <li data-product-category="{{$product->category}}">
     <article class="card">
         <figure class="card__image">
-            <img src="{{$product->image}}" alt="Photo of {{$product->name}}">
+            <img src="{{asset(str_replace('public', 'storage', $product->image))}}" alt="Photo of {{$product->name}}">
         </figure>
         <section class="card__body">
             <section class="card__body__text">

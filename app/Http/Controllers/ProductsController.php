@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use DB;
 use Carbon\Carbon;
 use App\Models\Product;
@@ -31,11 +32,13 @@ class ProductsController extends Controller
     }
 
     public function store(Request $request, Product $product){
+        // dd($request);
         $product->name = $request->input('name');
         $product->owner_email = $email = $request->user()['email'];
         $product->category = $request->input('category');
         $product->description = $request->input('description');
-        $product->image = $request->input('image');
+        $path = $request->file('image')->store('public/images');
+        $product->image = $path;
         
         try{
             $product->save();
