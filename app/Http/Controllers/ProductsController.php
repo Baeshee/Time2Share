@@ -52,21 +52,35 @@ class ProductsController extends Controller
         $email = $request->user()['email'];
         $date = Carbon::now()->addDays(14)->format('d-m-Y');
         $id = $id;
-        DB::update('UPDATE products SET lender_email = ?, return_date = ?, status = "Lend Out" WHERE id = ?', [$email, $date, $id]);
+
+        DB::table('products')->where('id', $id)->update([
+            'lender_email' => $email,
+            'return_date' => $date,
+            'status' => 'Lend Out',
+        ]);
 
         return redirect('/redirect-lend');
     }
 
     public function updateReturn(Request $request, $id){
         $id = $id;
-        DB::update('UPDATE products SET status = "Returning", return_date = "Waiting for Accept" WHERE id = ?', [$id]);
+
+        DB::table('products')->where('id', $id)->update([
+            'return_date' => 'Waiting for Accept',
+            'status' => 'Returning',
+        ]);
 
         return redirect('/redirect-return');
     }
 
     public function updateReturnAccept(Request $request, $id){
         $id = $id;
-        DB::update('UPDATE products SET lender_email = NULL, return_date = NULL, status = "Available" WHERE id = ?', [$id]);
+
+        DB::table('products')->where('id', $id)->update([
+            'lender_email' => NULL,
+            'return_date' => NULL,
+            'status' => 'Available',
+        ]);
 
         return redirect('/redirect-accept');
     }
