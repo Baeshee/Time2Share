@@ -2,7 +2,7 @@
     <a href="/products/{{$product->id}}">
         <article class="gridCard">
             <figure class="gridCard__image">
-                <img src="{{$product->image}}" alt="Photo of {{$product->name}}">
+                <img src="{{asset(str_replace('public', 'storage', $product->image))}}" alt="Photo of {{$product->name}}">
             </figure>
             <section class="gridCard__body">
                 <section class="gridCard__body__text">

@@ -2,7 +2,7 @@
     <a href="/products/{{$product->id}}">
         <article class="ownedCard">
             <figure class="ownedCard__image">
-                <img src="{{$product->image}}" alt="Photo of {{$product->name}}">
+                <img src="{{asset(str_replace('public', 'storage', $product->image))}}" alt="Photo of {{$product->name}}">
             </figure>
             <section class="ownedCard__body">
                 <section class="ownedCard__body__text">

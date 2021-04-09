@@ -6,7 +6,7 @@
             <h2>Add a product</h2>
         </section>
         <section class="redirect-page__product-form">
-            <form method='post' action="/product">
+            <form method='post' action="/product" enctype="multipart/form-data">
                 @csrf
 
                 <section class="redirect-page__product-form-section">
@@ -15,8 +15,8 @@
                 </section>
 
                 <section class="redirect-page__product-form-section">
-                    <label for="image"> Image (Url) </label>
-                    <input class="redirect-page__product-form__input" name="image" id="image" type="text"></input>
+                    <label for="image"> Image </label>
+                    <input class="redirect-page__product-form__input" name="image" id="image" type="file"></input>
                 </section>
 
                 <section class="redirect-page__product-form-section">
