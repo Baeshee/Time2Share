@@ -22,7 +22,6 @@
                         @method('PATCH')
                         @csrf
                         <input class="button active" type="submit" value="Return">
-                        <input class="hidden" type='number' name='id' value='{{$lend_product->id}}'/>
                     </form>
                     @endif
                 </section> 

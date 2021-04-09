@@ -9,7 +9,6 @@
                 @method('put')
                 
                 <input class="remove-button" type="submit" value="Block/Unblock">
-                <input class="hidden" type='number' name='id' value='{{$user->id}}'/>
             </form>
         </section>
     </article>

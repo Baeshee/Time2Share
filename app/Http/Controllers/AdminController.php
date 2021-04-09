@@ -28,8 +28,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function updateUser(Request $request){
-        $id = $request->input('id');
+    public function updateUser(Request $request, $id){
+        $id = $id;
 
         if(User::find($id)->account_status == "Active"){
             DB::update('UPDATE users SET account_status = "Blocked" WHERE id = ?', [$id]);
@@ -41,15 +41,15 @@ class AdminController extends Controller
         
     }
 
-    public function destroyProduct(Request $request){
-        $id = $request->input('id');
+    public function destroyProduct(Request $request, $id){
+        $id = $id;
 
         DB::delete('DELETE FROM products WHERE id = ?', [$id]);
         return redirect('/manage/products');
     }
 
-    public function destroyReview(Request $request){
-        $id = $request->input('id');
+    public function destroyReview(Request $request, $id){
+        $id = $id;
 
         DB::delete('DELETE FROM reviews WHERE id = ?', [$id]);
         return redirect('/manage/reviews');
