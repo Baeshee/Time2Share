@@ -23,7 +23,6 @@
                             @method('PATCH')
                             @csrf
                             <input class="button active" type="submit" value="Accept Return">
-                            <input class="hidden" type='number' name='id' value='{{$product->id}}'/>
                         </form>
                     </section> 
                 @endif 

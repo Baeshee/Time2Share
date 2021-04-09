@@ -8,7 +8,6 @@
                 @method('DELETE')
                 @csrf
                 <input class="remove-button" type="submit" value="Remove">
-                <input class="hidden" type='number' name='id' value='{{$product->id}}'/>
             </form>
         </section>
     </article>
