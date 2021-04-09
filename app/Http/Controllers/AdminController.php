@@ -28,7 +28,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function putUser(Request $request){
+    public function updateUser(Request $request){
         $id = $request->input('id');
 
         if(User::find($id)->account_status == "Active"){

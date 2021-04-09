@@ -18,7 +18,8 @@
                             <input class="button disabled" type="submit" value="Lend">
                         </form>
                     @else
-                    <form method="post" action="/return">
+                    <form method="post" action="/return/{{$lend_product->id}}">
+                        @method('PATCH')
                         @csrf
                         <input class="button active" type="submit" value="Return">
                         <input class="hidden" type='number' name='id' value='{{$lend_product->id}}'/>
