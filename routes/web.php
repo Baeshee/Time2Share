@@ -32,9 +32,9 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('/manage/users', [AdminController::class, 'indexUsers']);
     Route::get('/manage/products', [AdminController::class, 'indexProducts']);
     Route::get('/manage/reviews', [AdminController::class, 'indexReviews']);
-    Route::put('/manage/user/update', [AdminController::class, 'putUser']);
-    Route::delete('/manage/product/delete', [AdminController::class, 'destroyProduct']);
-    Route::delete('/manage/review/delete', [AdminController::class, 'destroyReview']);
+    Route::put('/manage/user/{id}', [AdminController::class, 'updateUser']);
+    Route::delete('/manage/product/{id}', [AdminController::class, 'destroyProduct']);
+    Route::delete('/manage/review/{id}', [AdminController::class, 'destroyReview']);
 });
 
 Route::middleware(['auth', 'blocked'])->group(function(){
@@ -45,9 +45,9 @@ Route::middleware(['auth', 'blocked'])->group(function(){
     Route::get('/products/{id}', [ProductsController::class, 'show']);
     Route::get('/review/create', [ReviewsController::class, 'create']);
     Route::post('/review', [ReviewsController::class, 'store']);
-    Route::post('/lend', [ProductsController::class, 'updateLend']);
-    Route::post('/return', [ProductsController::class, 'updateReturn']);
-    Route::post('/return/accept', [ProductsController::class, 'updateReturnAccept']);
+    Route::patch('/lend/{id}', [ProductsController::class, 'updateLend']);
+    Route::patch('/return/{id}', [ProductsController::class, 'updateReturn']);
+    Route::patch('/return/accept/{id}', [ProductsController::class, 'updateReturnAccept']);
     Route::get('/redirect-lend', function(){
         return view('redirections.redirect--lend');
     });

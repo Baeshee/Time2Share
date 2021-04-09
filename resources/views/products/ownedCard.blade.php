@@ -19,7 +19,8 @@
                 </section>  
                 @if ($product->status == 'Returning')
                     <section class="ownedCard__body__buttons">
-                        <form method="post" action="/return/accept">
+                        <form method="post" action="/return/accept/{{$product->id}}">
+                            @method('PATCH')
                             @csrf
                             <input class="button active" type="submit" value="Accept Return">
                             <input class="hidden" type='number' name='id' value='{{$product->id}}'/>
