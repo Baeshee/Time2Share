@@ -20,4 +20,8 @@ class Product extends Model
     public function allReviews(){
         return $this->hasMany('\App\Models\Review', 'product_name', 'name');
     }
+
+    public function getCategory(){
+        return $this->belongsTo('\App\ModelsCategory', 'category', 'category');
+    }
 }

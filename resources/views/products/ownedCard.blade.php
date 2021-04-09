@@ -7,6 +7,7 @@
             <section class="ownedCard__body">
                 <section class="ownedCard__body__text">
                     <h2 class="js--ownedCard__body__title">{{$product->name}}</h2>
+                    <p>Category: {{$product->category}}</p>
                     <p>{{$product->description}}</p>
                     @if($product->status == 'Lend Out')
                         <p class="red">{{$product->status}}</p>

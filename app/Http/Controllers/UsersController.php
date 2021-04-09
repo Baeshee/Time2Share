@@ -32,22 +32,4 @@ class UsersController extends Controller
     //         'products' => \App\Models\User::find($id)->allOwnedProducts,
     //     ]);
     // }
-
-    public function create(){
-        return view('users.create');
-    }
-
-    public function store(Request $request, Product $product){
-        $product->name = $request->input('name');
-        $product->owner_email = $email = $request->user()['email'];
-        $product->description = $request->input('description');
-        $product->image = $request->input('image');
-        
-        try{
-            $product->save();
-            return redirect('/redirect-create');
-        } catch (Exception $e){
-            return redirect('/users/create');
-        } 
-    }
 }

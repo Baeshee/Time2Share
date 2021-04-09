@@ -6,7 +6,7 @@
             <h2>Add a product</h2>
         </section>
         <section class="redirect-page__product-form">
-            <form method='post' action="/user">
+            <form method='post' action="/product">
                 @csrf
 
                 <section class="redirect-page__product-form-section">
@@ -17,6 +17,15 @@
                 <section class="redirect-page__product-form-section">
                     <label for="image"> Image (Url) </label>
                     <input class="redirect-page__product-form__input" name="image" id="image" type="text"></input>
+                </section>
+
+                <section class="redirect-page__product-form-section">
+                    <label for="category"> Category </label>
+                    <select class="redirect-page__product-form__input" id="category" name="category">
+                        @foreach ($categories as $category)
+                            <option value={{ $category->category }}>{{ $category->category }}</option>
+                        @endforeach
+                    </select>
                 </section>
 
                 <section class="redirect-page__product-form-section">

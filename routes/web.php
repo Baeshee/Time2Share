@@ -39,8 +39,8 @@ Route::middleware(['auth', 'admin'])->group(function(){
 
 Route::middleware(['auth', 'blocked'])->group(function(){
     Route::get('/dashboard', [UsersController::class, 'show'])->name('dashboard');
-    Route::get('/user/create', [UsersController::class, 'create']);
-    Route::post('/user', [UsersController::class, 'store']);
+    Route::get('/product/create', [ProductsController::class, 'create']);
+    Route::post('/product', [ProductsController::class, 'store']);
     Route::get('/products', [ProductsController::class, 'index']);
     Route::get('/products/{id}', [ProductsController::class, 'show']);
     Route::get('/review/create', [ReviewsController::class, 'create']);

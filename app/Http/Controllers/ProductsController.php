@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductsController extends Controller
 {
     public function index(){
         return view('products.index', [
             'products' => Product::all(),
+            'categories' => Category::all(),
         ]);
     }
 
@@ -20,6 +22,27 @@ class ProductsController extends Controller
             'product' => Product::find($id),
             'reviews' => Product::find($id)->allReviews,
         ]);
+    }
+
+    public function create(){
+        return view('products.create', [
+            'categories' => Category::all(),
+        ]);
+    }
+
+    public function store(Request $request, Product $product){
+        $product->name = $request->input('name');
+        $product->owner_email = $email = $request->user()['email'];
+        $product->category = $request->input('category');
+        $product->description = $request->input('description');
+        $product->image = $request->input('image');
+        
+        try{
+            $product->save();
+            return redirect('/redirect-create');
+        } catch (Exception $e){
+            return redirect('/users/create');
+        } 
     }
 
     public function updateLend(Request $request){

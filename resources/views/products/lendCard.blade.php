@@ -7,6 +7,7 @@
             <section class="lendCard__body">
                 <section class="lendCard__body__text">
                     <h2 class="js--lendCard__body__title">{{$lend_product->name}}</h2>
+                    <p>Category: {{$lend_product->category}}</p>
                     <p>{{$lend_product->description}}</p>
                     <p>Return date: {{$lend_product->return_date}}</p>
                 </section>  

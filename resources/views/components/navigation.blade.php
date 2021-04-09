@@ -7,7 +7,7 @@
     <ul class="navigation-menu">
         <li class="navigation-menu__item"><a href="/">Time2Share <i class="fas fa-history"></i></a></li>
         <li class="navigation-menu__item"><a href="/">Products</a></li>
-        <li class="navigation-menu__item"><a href="/user/create">Add Product</a></li>
+        <li class="navigation-menu__item"><a href="/product/create">Add Product</a></li>
         <li class="navigation-menu__item"><a href="/dashboard">Account</a></li>
     </ul>
 </nav>

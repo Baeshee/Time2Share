@@ -25,7 +25,7 @@
 
                 <section class="redirect-page__review-form-buttons redirect-page__buttons">
                     <a class="button active redirect-small" href="/">Go to Home</a>
-                    <input class="button active" type="submit" value="Send">
+                    <input class="button active redirect-small" type="submit" value="Send">
                 </section>
             </form>
         </section>    
