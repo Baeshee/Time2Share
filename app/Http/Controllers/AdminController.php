@@ -32,10 +32,16 @@ class AdminController extends Controller
         $id = $id;
 
         if(User::find($id)->account_status == "Active"){
-            DB::update('UPDATE users SET account_status = "Blocked" WHERE id = ?', [$id]);
+            DB::table('users')->where('id', $id)->update([
+                'account_status' => 'Blocked',
+            ]);
+
             return redirect('/manage/users');
         } else {
-            DB::update('UPDATE users SET account_status = "Active" WHERE id = ?', [$id]);
+            DB::table('users')->where('id', $id)->update([
+                'account_status' => 'Active',
+            ]);
+
             return redirect('/manage/users');
         }
         
@@ -44,14 +50,16 @@ class AdminController extends Controller
     public function destroyProduct(Request $request, $id){
         $id = $id;
 
-        DB::delete('DELETE FROM products WHERE id = ?', [$id]);
+        DB::table('products')->where('id', $id)->delete();
+
         return redirect('/manage/products');
     }
 
     public function destroyReview(Request $request, $id){
         $id = $id;
 
-        DB::delete('DELETE FROM reviews WHERE id = ?', [$id]);
+        DB::table('reviews')->where('id', $id)->delete();
+
         return redirect('/manage/reviews');
     }
 }
