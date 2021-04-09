@@ -1,4 +1,4 @@
-<li data-product-status="{{$product->category}}">
+<li data-product-category="{{$product->category}}">
     <a href="/products/{{$product->id}}">
         <article class="gridCard">
             <figure class="gridCard__image">

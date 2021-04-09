@@ -135,7 +135,6 @@ li{
     height: 50rem;
     box-shadow: 0 0.5rem 1.5rem black;
     border-radius: 2rem;
-    border: 0.1rem solid var(--blue-main-color);
 }
 
 .lendCard__image, .ownedCard__image{
@@ -186,7 +185,6 @@ li{
     box-shadow: 0 0.5rem 1.5rem black;
     border-radius: 2rem;
     margin: 5rem 0;
-    border: 0.1rem solid var(--blue-main-color);
 }
 
 .card__image{
@@ -234,7 +232,7 @@ li{
     font-size: 1.5rem;
     height: 5rem;
     width: 12rem;
-    border: 0.2rem solid var(--blue-main-color);
+    border: 0.2rem solid var(--dark-grey-color);
     background-color: var(--blue-main-color);
     color: white;
 }
@@ -242,17 +240,6 @@ li{
 .active:hover{
     cursor: pointer;
     transform: scale(0.95);
-}
-
-.disabled{
-    background-color: var(--btn-disabled);
-    color: rgba(0, 0, 0, 0.26);
-}
-
-.cancel{
-    background-color: white;
-    color: black;
-    border: 0.2rem solid var(--blue-main-color);
 }
 
 .redirect-page{
@@ -295,15 +282,6 @@ li{
     justify-content: center;
 }
 
-.redirect-small{
-    font-size: 1.5rem;
-    height: 5rem;
-    width: 10rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .redirect-page__review-form, .redirect-page__product-form{
     width: 30rem;
     margin: 5rem auto;
@@ -316,23 +294,62 @@ li{
     background-color: #eee;
 }
 
+.login, .register, .forgot-password{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--blue-main-color);
+}
+
+.login > h2 > a, .register > h2 > a, .forgot-password > h2 > a{
+    font-size: 4rem;
+    color: white;
+}
+
+.login-form, .register-form, .forgot-password-form{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    background-color: #eee;
+    width: 30rem;
+    margin: 5rem auto;
+    padding: 2rem;
+    box-shadow: 0 0 2rem black;
+}
+
+.login-link, .register-link{
+    color: black;
+    font-size: 2rem;
+}
+
+.login-form__section__buttons, .register-form__section__buttons, .forgot-password-form__section__buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 4rem;
+}
+
 .redirect-page__product-form{
     height: 60rem;
 }
 
-.redirect-page__review-form-section, .redirect-page__product-form-section{
+.redirect-page__review-form-section, .redirect-page__product-form-section, .login-form__section, .register-form__section, .forgot-password-form__section{
     margin-top: 2rem;
     font-size: 2rem;
     width: 100%;
 }
 
-.redirect-page__review-form__input, .redirect-page__product-form__input{
+.redirect-page__review-form__input, .redirect-page__product-form__input, .login-form__section__input, .register-form__section__input, .forgot-password-form__section__input{
     display: block;
     margin-top: 1rem;
     width: 100%;
     font-size: 100%;
     font-weight: 400;
     font-family: sans-serif;
+    padding: 0.2rem;
 }
 
 .redirect-page__review-form__option{
@@ -350,9 +367,7 @@ li{
     margin-top: 2rem;
 }
 
-.hidden{
-    display: none;
-}
+
 
 .dashboard-headers{
     margin-top: 3rem;
@@ -364,11 +379,11 @@ li{
 }
 
 .review-wrapper{
-    margin: 4rem 4rem 0 4rem;
+    margin: 4rem 4rem 4rem 4rem;
     display: grid;
     grid-template-columns: repeat(1,minmax(0,1fr));
     grid-gap: 4rem;
-    width: 30rem;
+    width: 40rem;
 }
 
 .review-card{
@@ -507,7 +522,10 @@ li{
     margin-top: 7rem;
     font-size: 2rem;
     color: black;
+    opacity: 1;
 }
+
+
 
 
 /* Menu Icon */
@@ -797,4 +815,37 @@ li{
 
 .green{
     color: green;
+}
+
+.disabled{
+    background-color: var(--btn-disabled);
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.cancel{
+    background-color: white;
+    color: black;
+    border: 0.2rem solid var(--blue-main-color);
+}
+
+.redirect-small{
+    font-size: 1.5rem;
+    height: 5rem;
+    width: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.smaller-text{
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+.hidden{
+    display: none;
+}
+
+.link-visible{
+    opacity: 0;
 }

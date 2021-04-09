@@ -1,4 +1,4 @@
-<li data-product-status="{{$product->status}}">
+<li data-product-category="{{$product->category}}">
     <article class="card">
         <figure class="card__image">
             <img src="{{$product->image}}" alt="Photo of {{$product->name}}">

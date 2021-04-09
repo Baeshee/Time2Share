@@ -1,11 +1,15 @@
 const menu_icon = document.getElementsByClassName("menu-icon")[0];
 const menu = document.getElementsByClassName("navigation-menu")[0];
+let back_link = document.getElementsByClassName("back-link");
 const html = document.getElementsByTagName('html')[0];
 
 function changeIcon() {
     menu_icon.classList.toggle("change");
     menu.classList.toggle('visible');
     html.classList.toggle('no-scroll');
+    for(let i = 0; i < back_link.length; i++){
+        back_link[i].classList.toggle('link-visible');
+    }
 }
 
 function searchFunction(){
@@ -26,67 +30,30 @@ function searchFunction(){
 }
 
 if (window.location.href == "http://127.0.0.1:8000/"){
-    let checkbox_available = document.getElementById('available');
-    let checkbox_unavailable = document.getElementById('unavailable');
-    let checkbox_returning = document.getElementById('returning');
-    let list_of_products = document.getElementsByTagName('li');
-    
-    checkbox_available.checked = true;
-    checkbox_unavailable.checked = true;
-    checkbox_returning.checked = true;
-    
+    const select = document.getElementsByClassName('filter-section__select')[0];
+    let card_wrapper = document.getElementsByClassName("card-wrapper")[0];
+    let list_of_products = card_wrapper.getElementsByTagName('li');
+    let select_value;
     for(let i = 0; i < list_of_products.length; i++){
         list_of_products[i].style.display = '';
     }
-    
-    checkbox_available.addEventListener('change', function(){
-        if(checkbox_available.checked){
-            for(let i = 0; i < list_of_products.length; i++){
-                if (list_of_products[i].dataset.productStatus == 'Available'){
-                    list_of_products[i].style.display = '';       
-                }  
-            }
-        } 
-        else {
-            for(let i = 0; i < list_of_products.length; i++){
-                if (list_of_products[i].dataset.productStatus == 'Available'){
-                    list_of_products[i].style.display = 'none';       
-                }  
-            }
-        }
-    });
-    
-    checkbox_unavailable.addEventListener('change', function(){
-        if(checkbox_unavailable.checked){
-            for(let i = 0; i < list_of_products.length; i++){
-                if (list_of_products[i].dataset.productStatus == 'Unavailable'){
-                    list_of_products[i].style.display = '';       
-                }  
-            }
-        } 
-        else {
-            for(let i = 0; i < list_of_products.length; i++){
-                if (list_of_products[i].dataset.productStatus == 'Unavailable'){
-                    list_of_products[i].style.display = 'none';       
-                }  
-            }
-        }
-    });
 
-    checkbox_returning.addEventListener('change', function(){
-        if(checkbox_returning.checked){
+    select.addEventListener('change', function(){
+        select_value = select.value;
+        if(select_value == 'All'){
             for(let i = 0; i < list_of_products.length; i++){
-                if (list_of_products[i].dataset.productStatus == 'Returning'){
                     list_of_products[i].style.display = '';       
                 }  
             }
-        } 
         else {
             for(let i = 0; i < list_of_products.length; i++){
-                if (list_of_products[i].dataset.productStatus == 'Returning'){
-                    list_of_products[i].style.display = 'none';       
+                    if (list_of_products[i].dataset.productCategory == select_value){
+                        list_of_products[i].style.display = '';
+                    }     
+                    else {
+                        list_of_products[i].style.display = 'none'; 
+                    } 
                 }  
             }
-        }
     });
 }

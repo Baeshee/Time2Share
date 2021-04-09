@@ -6,7 +6,7 @@
 
     <section class="filter-section">
         <select class="filter-section__select">
-            <option value="Filter">Filter</option>
+            <option value="All">All</option>
             @foreach ($categories as $category)
                 <option value={{$category->category}}>{{$category->category}}</option>               
             @endforeach
