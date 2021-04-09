@@ -3,18 +3,68 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Carbon\Carbon;
+use App\Models\Product;
+use App\Models\Category;
 
 class ProductsController extends Controller
 {
     public function index(){
         return view('products.index', [
-            'products' => \App\Models\Product::all(),
+            'products' => Product::all(),
+            'categories' => Category::all(),
         ]);
     }
 
     public function show($id){
         return view('products.show', [
-            'product' => \App\Models\Product::find($id),
+            'product' => Product::find($id),
+            'reviews' => Product::find($id)->allReviews,
         ]);
+    }
+
+    public function create(){
+        return view('products.create', [
+            'categories' => Category::all(),
+        ]);
+    }
+
+    public function store(Request $request, Product $product){
+        $product->name = $request->input('name');
+        $product->owner_email = $email = $request->user()['email'];
+        $product->category = $request->input('category');
+        $product->description = $request->input('description');
+        $product->image = $request->input('image');
+        
+        try{
+            $product->save();
+            return redirect('/redirect-create');
+        } catch (Exception $e){
+            return redirect('/users/create');
+        } 
+    }
+
+    public function updateLend(Request $request){
+        $email = $request->user()['email'];
+        $date = Carbon::now()->addDays(14)->format('d-m-Y');
+        $id = $request->input('id');
+        DB::update('UPDATE products SET lender_email = ?, return_date = ?, status = "Lend Out" WHERE id = ?', [$email, $date, $id]);
+
+        return redirect('/redirect-lend');
+    }
+
+    public function updateReturn(Request $request){
+        $id = $request->input('id');
+        DB::update('UPDATE products SET status = "Returning", return_date = "Waiting for Accept" WHERE id = ?', [$id]);
+
+        return redirect('/redirect-return');
+    }
+
+    public function updateReturnAccept(Request $request){
+        $id = $request->input('id');
+        DB::update('UPDATE products SET lender_email = NULL, return_date = NULL, status = "Available" WHERE id = ?', [$id]);
+
+        return redirect('/redirect-accept');
     }
 }

@@ -21,6 +21,8 @@ use App\Http\Controllers\ApiController;
 
 Route::get('users', [ApiController::class, 'getAllUsers']);
 Route::get('products', [ApiController::class, 'getAllProducts']);
+Route::get('reviews', [ApiController::class, 'getAllReviews']);
 Route::get('users/{id}', [ApiController::class, 'getUser']);
 Route::get('products/{id}', [ApiController::class, 'getProduct']);
+Route::get('reviews/{id}', [ApiController::class, 'getReview']);
 

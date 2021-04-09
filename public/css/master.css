@@ -3,6 +3,12 @@
     padding: 0;
 }
 
+:root{
+    --blue-main-color: #00adb5;
+    --btn-disabled: #018d94a9;
+    --dark-grey-color: #393e46;
+}
+
 html{
     font-size: 62.5%;
 }
@@ -16,7 +22,7 @@ body{
 }
 
 nav{
-    background-color: black;
+    background-color: var(--blue-main-color);
     height: 6rem;
     display: flex;
     justify-content: flex-end;
@@ -52,8 +58,8 @@ li{
     flex-direction: column;
     overflow-y: hidden;
     gap: 3rem;
-    background-color: black;
     transition-duration: 0.8s;
+    background-color: var(--blue-main-color);
 }
 
 .navigation-menu__item{
@@ -68,7 +74,7 @@ li{
 }
 
 .card-wrapper{
-    margin: 4rem 4rem 0 4rem;
+    margin: 4rem;
     display: grid;
     grid-template-columns: repeat(1,minmax(0,1fr));
     grid-gap: 4rem;
@@ -76,7 +82,7 @@ li{
 
 .js--search-box{
     height: 4rem;
-    border: 0.2rem solid black;
+    border: 0.2rem solid var(--dark-grey-color);
     border-radius: 0.5rem;
     margin-top: 5rem;
     padding: 0rem 1rem;
@@ -84,17 +90,30 @@ li{
 }
 
 .filter-section{
-    width: 100%;
-    color: black;
-    font-size: 160%;
+    width: 20rem;
+    font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
 }
 
-.filter-section__wrapper{
-    margin-bottom: 2rem;
+.filter-section__select{
+    width: 100%;
+    height: 4rem;
+    border: 0.2rem solid var(--dark-grey-color);
+    border-radius: 0.5rem;
+    background-color:white;
+    color: rgb(114, 114, 114);
+}
+
+.filter-section__select option{
+    color: black;
+    background-color: white;
+}
+
+.filter-section__select option:hover{
+    color: black;
+    background-color: var(--blue-main-color);
 }
 
 .owned-products-header{
@@ -102,15 +121,8 @@ li{
     color: black;
 }
 
-.gridCard{
-    width: 100%;
-    height: 40rem;
-    box-shadow: 0 0.5rem 1.5rem black;
-    border-radius: 2rem;
-}
-
-.gridCard:hover{
-    transform: scale(1.05);
+.gridCard:hover, .ownedCard:hover, .lendCard:hover{
+    transform: scale(1.02);
 }
 
 .gridCard__image{
@@ -118,7 +130,19 @@ li{
     height: 70%;
 }
 
-.gridCard__image img{
+.lendCard, .ownedCard, .gridCard{
+    width: 100%;
+    height: 50rem;
+    box-shadow: 0 0.5rem 1.5rem black;
+    border-radius: 2rem;
+}
+
+.lendCard__image, .ownedCard__image{
+    width: 100%;
+    height: 60%;
+}
+
+.lendCard__image img, .ownedCard__image img, .gridCard__image img{
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     width: 100%;
@@ -126,23 +150,32 @@ li{
     object-fit: cover;
 }
 
-.gridCard__body{
+.lendCard__body, .ownedCard__body, .gridCard__body{
     margin-top: -0.3rem;
     height: 30%;
     width: 100%;
 }
 
-.gridCard__body__text{
+.lendCard__body__text, .ownedCard__body__text, .gridCard__body__text{
     margin: 2rem 2rem 0 2rem
 }
 
-.gridCard__body__text h2{
+.lendCard__body__text h2, .ownedCard__body__text h2, .gridCard__body__text h2{
     font-size: 1.6rem;
 }
 
-.gridCard__body__text p{
+.lendCard__body__text p, .ownedCard__body__text p, .gridCard__body__text p{
     padding-top: 0.5rem;
     font-size: 1.4rem;
+}
+
+.lendCard__body__buttons, .ownedCard__body__buttons{
+    margin-top: 5rem;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -152,10 +185,6 @@ li{
     box-shadow: 0 0.5rem 1.5rem black;
     border-radius: 2rem;
     margin: 5rem 0;
-}
-
-.card:hover{
-    transform: scale(1.05);
 }
 
 .card__image{
@@ -190,7 +219,7 @@ li{
     font-size: 1.4rem;
 }
 
-.card__body__buttons{
+.card__body__buttons, .redirect-page__review-form-buttons{
     margin-top: 5rem;
     height: 10%;
     width: 100%;
@@ -200,17 +229,303 @@ li{
 }
 
 .button{
+    font-size: 1.5rem;
     height: 5rem;
-    width: 10rem;
-    border: 1px solid rgb(36, 36, 36);
-    background-color: rgb(36, 36, 36);
+    width: 12rem;
+    border: 0.2rem solid var(--dark-grey-color);
+    background-color: var(--blue-main-color);
     color: white;
 }
 
-.disabled{
-    background-color: rgba(133, 133, 133, 0.39);
-    color: rgba(0, 0, 0, 0.26);
+.active:hover{
+    cursor: pointer;
+    transform: scale(0.95);
 }
+
+.redirect-page{
+    margin: 5rem 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.redirect-page__body{
+    width: 30rem;
+}
+
+.redirect-page__body h2{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.redirect-page__body p{
+    margin-top: 2rem;
+    font-size: 2rem;
+}
+
+.redirect-page__buttons{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+}
+
+.redirect{
+    font-size: 2rem;
+    width: 15rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.redirect-page__review-form, .redirect-page__product-form{
+    width: 30rem;
+    margin: 5rem auto;
+    box-shadow: 0 0.5rem 2rem black;
+    height: 45rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 2rem;
+    background-color: #eee;
+}
+
+.login, .register, .forgot-password{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--blue-main-color);
+}
+
+.login > h2 > a, .register > h2 > a, .forgot-password > h2 > a{
+    font-size: 4rem;
+    color: white;
+}
+
+.login-form, .register-form, .forgot-password-form{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    background-color: #eee;
+    width: 30rem;
+    margin: 5rem auto;
+    padding: 2rem;
+    box-shadow: 0 0 2rem black;
+}
+
+.login-link, .register-link{
+    color: black;
+    font-size: 2rem;
+}
+
+.login-form__section__buttons, .register-form__section__buttons, .forgot-password-form__section__buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 4rem;
+}
+
+.redirect-page__product-form{
+    height: 60rem;
+}
+
+.redirect-page__review-form-section, .redirect-page__product-form-section, .login-form__section, .register-form__section, .forgot-password-form__section{
+    margin-top: 2rem;
+    font-size: 2rem;
+    width: 100%;
+}
+
+.redirect-page__review-form__input, .redirect-page__product-form__input, .login-form__section__input, .register-form__section__input, .forgot-password-form__section__input{
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 100%;
+    font-weight: 400;
+    font-family: sans-serif;
+    padding: 0.2rem;
+}
+
+.redirect-page__review-form__option{
+    background-color: white;
+    color: black;
+}
+
+.redirect-page__review-form__big, .redirect-page__product-form__big{
+    height: 20rem;
+    padding: 0.5rem;
+}
+
+.redirect-page__review-form-buttons, .redirect-page__product-form-buttons{
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+
+
+.dashboard-headers{
+    margin-top: 3rem;
+    font-size: 3rem;
+}
+
+.dashboard-placeholder{
+    font-size: 2.5rem;
+}
+
+.review-wrapper{
+    margin: 4rem 4rem 4rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(1,minmax(0,1fr));
+    grid-gap: 4rem;
+    width: 40rem;
+}
+
+.review-card{
+    width: 100%;
+    height: 20rem;
+    box-shadow: 0 0.5rem 1.5rem black;
+    border-radius: 2rem;
+}
+
+.review-card__heading{
+    height: 45%;
+    width: 100%;
+    background-color: var(--dark-grey-color);
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    border-bottom: 0.1rem solid black;
+    color: white;
+}
+
+.review-card__heading h2{
+    padding-top:2rem;
+    font-size: 2.5rem;
+}
+
+.review-card__heading p{
+    font-size: 2rem;
+}
+
+.review-card__heading h2, .review-card__heading p, .review-card__body p{
+    padding-left: 2rem;
+}
+
+.review-card__body{
+    height: 55%;
+    width: 100%;
+}
+
+.review-card__body p{
+    padding-top: 2rem;
+    font-size: 2rem;
+}
+
+.review-section-header{
+    margin-top: 4em;
+    font-size: 3rem;
+}
+
+.logout-link{
+    position: absolute;
+    top: 0;
+    left: 4%;
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.manage-link{
+    position: absolute;
+    top: 0;
+    left: 25%;
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.manage-page__buttons{
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+}
+
+.manage-page__buttons h2{
+    font-size: 3rem;
+}
+
+.manage-macro{
+    font-size: 2rem;
+    width: 20rem;
+    height: 7.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.manage-header{
+    margin-top: 5rem;
+    font-size: 3rem;
+}
+
+.manage-list{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 0.5rem;
+    flex-direction: column;
+    width: 80%;
+}
+
+.manage-list__item{
+    border: 0.2rem solid black;
+    border-radius: 0.5rem;
+}
+
+.manage-list__item:nth-child(even){
+    background-color: #eee;
+}
+
+.manage-list__item__container{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    margin: 0.2rem 1rem;
+}
+
+.manage-list__item__value {
+    font-size: 1.5rem;
+}
+
+.manage-list__item__action{
+    font-size: 1.5rem; 
+    justify-self: end;
+}
+
+.no-entries{
+    margin-top: 4rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.back-link{
+    position: absolute;
+    top: 0;
+    left: 5%;
+    margin-top: 7rem;
+    font-size: 2rem;
+    color: black;
+    opacity: 1;
+}
+
+
 
 
 /* Menu Icon */
@@ -253,6 +568,10 @@ li{
         margin: 5vh 20vh 1vh 20vh;
     }
 
+    .dashboard-placeholder{
+        grid-column: 2 / span 1;
+    }
+
     .js--search-box{
         width: 40vw;
     }
@@ -263,6 +582,67 @@ li{
 
     .menu-icon{
         display: none;
+    }
+
+    .card{
+        width: 60vw;
+        height: 60rem;
+        box-shadow: 0 0.5rem 1.5rem black;
+        border-radius: 2rem;
+        margin: 5rem 0;
+        display: grid;
+        grid-template-columns: repeat(5,minmax(0,1fr));
+        grid-template-rows: repeat(5,minmax(0,1fr));
+    }
+    
+    .card__image{
+        width: 100%;
+        height: 100%;
+        grid-column: span 3;
+        grid-row: span 5;
+    }
+    
+    .card__image img{
+        border-top-left-radius: 2rem;
+        border-bottom-left-radius: 2rem;
+        border-top-right-radius: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .card__body{
+        margin-top: -0.3rem;
+        height: 100%;
+        width: 100%;
+        grid-column: 4 / span 3;
+        grid-row: span 5;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+    }
+    
+    .card__body__text{
+        margin: 2rem 2rem 0 2rem
+    }
+    
+    .card__body__text h2{
+        font-size: 3rem;
+    }
+    
+    .card__body__text p{
+        padding-top: 0.5rem;
+        font-size: 2rem;
+    }
+    
+    .card__body__buttons, .redirect-page__review-form-buttons{
+        margin-top: 5rem;
+        height: 10%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .navigation-menu{
@@ -286,12 +666,76 @@ li{
         display: block;
         height: 6rem;
     }
+
+    .redirect-page__body{
+        width: 50rem;
+    }
+
+    .review-wrapper{
+        width: 60rem;
+    }
+
+    .review-card{
+        height: 40rem;
+    }
+
+    .review-card__heading{
+        height: 25%;
+    }
+
+    .review-card__body{
+        height: 75%;
+    }
+
+    .logout-link{
+        position: absolute;
+        left: initial;
+        right: 0;
+        top: 0;
+        margin-top: 9rem;
+        margin-right: 5%;
+        font-size: 2.5rem;
+        color: black;
+    }
+
+    .manage-link{
+        position: absolute;
+        left: initial;
+        right: 0;
+        top: 0;
+        margin-top: 9rem;
+        margin-right: 11%;
+        font-size: 2.5rem;
+        color: black;
+    }
+
+    .manage-page__buttons{
+        flex-direction: row;
+        gap: 5rem;
+        margin-top: 15rem;
+    }
+
+    .manage-macro{
+        margin-top:2rem;
+    }
+
+    .manage-list{
+        width: 60%;
+    }
+
+    .back-link{
+        margin-top: 10rem;
+    }
 }
 
 @media (min-width: 780px) and (max-width: 1140px){
     .card-wrapper{
         grid-template-columns: repeat(2,minmax(0,1fr));
         margin: 5vh 10vh 1vh 10vh;
+    }
+
+    .dashboard-placeholder{
+        grid-column: span 2;
     }
 
     .js--search-box{
@@ -304,11 +748,7 @@ li{
         font-size: 3rem;
     }
 
-    .gridCard{
-        height: 55rem;
-    }
-
-    .card{
+    .gridCard, .card, .lendCard{
         height: 55rem;
     }
 
@@ -316,20 +756,41 @@ li{
         font-size: 6rem;
     }
 
-    .gridCard__body__text h2{
+    .gridCard__body__text h2, .card__body__text h2, .lendCard__body__text h2{
         font-size: 2.4rem;
     }
     
-    .gridCard__body__text p{
+    .gridCard__body__text p, .card__body__text p, .lendCard__body__text p{
         font-size: 1.8rem;
     }
 
-    .card__body__text h2{
-        font-size: 2.4rem;
+    .redirect-page__body{
+        width: 50rem;
     }
-    
-    .card__body__text p{
-        font-size: 1.8rem;
+
+    .card{
+        width: 60vw;
+        height: 80rem;
+    }
+
+    .review-wrapper{
+        width: 60rem;
+    }
+
+    .review-card{
+        height: 40rem;
+    }
+
+    .review-card__heading{
+        height: 25%;
+    }
+    .review-card__body{
+        height: 75%;
+    }
+
+    .logout-link{
+        margin-top: 1rem;
+        font-size: 3rem;
     }
 }
 
@@ -348,6 +809,43 @@ li{
     color: red;
 }
 
+.orange{
+    color: orange;
+}
+
 .green{
     color: green;
+}
+
+.disabled{
+    background-color: var(--btn-disabled);
+    color: rgba(0, 0, 0, 0.26);
+}
+
+.cancel{
+    background-color: white;
+    color: black;
+    border: 0.2rem solid var(--blue-main-color);
+}
+
+.redirect-small{
+    font-size: 1.5rem;
+    height: 5rem;
+    width: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.smaller-text{
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+.hidden{
+    display: none;
+}
+
+.link-visible{
+    opacity: 0;
 }

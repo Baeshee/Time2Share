@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Reviews;
 
 class ApiController extends Controller
 {
@@ -17,6 +18,11 @@ class ApiController extends Controller
         $products = Product::all()->toJson(JSON_PRETTY_PRINT);
         return response($products, 200);
     }
+
+    public function getAllReviews(){
+      $reviews = Review::all()->toJson(JSON_PRETTY_PRINT);
+      return response($reviews, 200);
+  }
 
     public function getUser($id){
         if (User::where('id', $id)->exists()) {
@@ -39,4 +45,15 @@ class ApiController extends Controller
             ], 404);
           }
     }
+
+    public function getReview($id){
+      if (Review::where('id', $id)->exists()) {
+          $review = Review::where('id', $id)->get()->toJson(JSON_PRETTY_PRINT);
+          return response($review, 200);
+        } else {
+          return response()->json([
+            "message" => "Review not found"
+          ], 404);
+        }
+  }
 }
