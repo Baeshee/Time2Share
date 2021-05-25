@@ -15,33 +15,33 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Bas',
-            'email' => 's1118301@student.hsleiden.nl',
+            'name' => 'User',
+            'email' => 'email@email.com',
             'password' => bcrypt('laravel'),
             'role' => 'Admin',
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Max',
-            'email' => 's1113893@student.hsleiden.nl',
+            'name' => 'User2',
+            'email' => 'email@email.com',
             'password' => bcrypt('laravel'),
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Toby',
-            'email' => 'toby@gmail.com',
+            'name' => 'User3',
+            'email' => 'email@email.com',
             'password' => bcrypt('laravel'),
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Ewout',
-            'email' => 'ewout@gmail.com',
+            'name' => 'User4',
+            'email' => 'email@email.com',
             'password' => bcrypt('laravel'),
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Rogar',
-            'email' => 'rogar@gmail.com',
+            'name' => 'User5',
+            'email' => 'email@email.com',
             'password' => bcrypt('laravel'),
         ]);
 
